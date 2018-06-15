@@ -1,9 +1,9 @@
-﻿@model testtest.Models.Autorization
+﻿@model testtest.Models.AutorizationModel
 @{
     ViewBag.Title = "Autorization";
 }
 <h1>Вход в систему</h1>
-@using (Html.BeginForm())
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
 {
     <p>Your login: @Html.TextBoxFor(m=>m.Login) </p>
     <p>Your password: @Html.TextBoxFor(m=>m.Password)</p>

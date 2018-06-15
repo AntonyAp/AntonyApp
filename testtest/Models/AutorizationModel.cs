@@ -1,6 +1,6 @@
 ﻿namespace testtest.Models
 {
-    public class Autorization
+    public class AutorizationModel
     {
         public string Login { get; set; }
         public string Password { get; set; }
