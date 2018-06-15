@@ -27,11 +27,11 @@ namespace testtest.Controllers
         {
             if (model.Password == "123456" && model.Login=="Nagibator228")
             {
-                return Redirect("Contact");
+                return RedirectToAction("Contact","Home");
             }
             else
             {
-                return Redirect("Index");
+                return RedirectToAction("Index", "Home");
             }
             
         }
