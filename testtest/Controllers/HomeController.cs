@@ -25,6 +25,10 @@ namespace testtest.Controllers
         [HttpPost]
         public ActionResult Login(AutorizationModel model)
         {
+            if (model.Password == "123456")
+            {
+                Response.Redirect("http://localhost:49393/Home/Contact");
+            }
             return Json("Temp");
         }
     }
