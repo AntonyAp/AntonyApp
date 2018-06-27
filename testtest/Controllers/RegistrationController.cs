@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using testtest.Models;
 
 namespace testtest.Controllers
 {
-    public class HomeController : Controller
+    public class RegistrationController : Controller
     {
+        // GET: Registration
         public ActionResult Index()
-
         {
-            return RedirectToAction("LoginPage", "Autorization");
+            return View();
         }
-
     }
 }
