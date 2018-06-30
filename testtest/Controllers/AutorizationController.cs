@@ -19,13 +19,12 @@ namespace testtest.Controllers
             {
                 if (model.Password == b.Password && model.Login == b.Login)
                     return RedirectToAction("Football", "Autorization");
-                else
-                {
-                    return RedirectToAction("LoginPage", "Autorization");
-                }
+
             }
 
-            return Json(model);
+            {
+                return RedirectToAction("LoginPage", "Autorization");
+            }
         }
 
         public ActionResult LoginPage()
