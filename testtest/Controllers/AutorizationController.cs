@@ -7,20 +7,25 @@ using testtest.Models;
 
 namespace testtest.Controllers
 {
+   
     public class AutorizationController : Controller
     {
+        UserContext db = new UserContext();
         // GET: Autorization
-        public ActionResult Login(AutorizationModel model)
+        public ActionResult Login(User model)
         {
-            if (model.Password == "123456" && model.Login == "Nagibator228")
+            var users = db.Users;
+            foreach (var b in users)
             {
-                return RedirectToAction("Football", "Autorization");
-            }
-            else
-            {
-                return RedirectToAction("LoginPage", "Autorization");
+                if (model.Password == b.Password && model.Login == b.Login)
+                    return RedirectToAction("Football", "Autorization");
+                else
+                {
+                    return RedirectToAction("LoginPage", "Autorization");
+                }
             }
 
+            return Json(model);
         }
 
         public ActionResult LoginPage()

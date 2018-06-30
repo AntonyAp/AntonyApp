@@ -1,0 +1,16 @@
+﻿
+
+@{
+    ViewBag.Title = "Регистрация ";
+}
+@using (Html.BeginForm("Registration", "Registration", FormMethod.Post))
+{
+    <p>Your login: <input type = "text" name="Login"/> </p>
+    <p>Your password: <input type = "text" name = "Password" /></p>
+    <p>Your name :<input type ="text" name = "Name" /></p>
+
+    <input type="submit" value="Зарегистрироваться " />
+    
+}
+
+
