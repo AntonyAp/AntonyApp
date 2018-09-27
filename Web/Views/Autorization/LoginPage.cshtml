@@ -1,0 +1,20 @@
+﻿
+@model testtest.Models.User
+@{
+    ViewBag.Title = "Autorization";
+}
+<h1>Вход в систему</h1>
+@using (Html.BeginForm("Login", "Autorization", FormMethod.Post))
+{
+    <p>Your login: @Html.TextBoxFor(m => m.Login) </p>
+    <p>Your password: @Html.TextBoxFor(m => m.Password)</p>
+    <p>
+
+    </p>
+    <input type="submit" value="Вход " />
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Create account", "RegistrationPage", "Registration")</li>
+                    
+    </ul>
+}
+
