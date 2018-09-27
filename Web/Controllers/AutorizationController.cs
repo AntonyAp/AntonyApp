@@ -1,4 +1,5 @@
 ﻿
+using Service;
 using System.Linq;
 using System.Web.Mvc;
 using testtest.Models;
@@ -11,10 +12,9 @@ namespace testtest.Controllers
         // GET: Autorization
         public ActionResult Login(User model)
         {
-            var users = db.Users;
-            var userExists = users.Any(x => x.Login == model.Login && x.Password == model.Password);
-            var redirectViewName = userExists ? "Football" : "LoginPage";
-                return RedirectToAction(redirectViewName, "Autorization");
+            UserService userService = new UserService();
+            var chekedDirection =userService.CheckData(model);
+                return RedirectToAction(chekedDirection, "Autorization");
             }
 
             public ActionResult LoginPage()

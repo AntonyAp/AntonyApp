@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using testtest.Models;
 using System.Data.Entity;
+using static Service.UserService;
+using Service;
 
 namespace testtest.Controllers
 {
@@ -18,8 +20,9 @@ namespace testtest.Controllers
         }
         public ActionResult Registration( User user)
         {
-            db.Users.Add(user);
-            db.SaveChanges();
+            var userService = new UserService();
+            userService.Add(user);
+            userService.Save(user);
             return RedirectToAction("LoginPage", "Autorization");
         }
     }
