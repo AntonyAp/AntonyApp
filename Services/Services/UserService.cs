@@ -12,7 +12,6 @@ namespace Services
         {
             dataAccessProvider = new EntityFrameworkDataAccessProvider();
         }
-        public UserContext db = new UserContext();
 
         public void Add(User user)
         {
