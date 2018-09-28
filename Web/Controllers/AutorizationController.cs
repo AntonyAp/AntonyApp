@@ -1,28 +1,26 @@
-﻿
-using Service;
-using System.Linq;
-using System.Web.Mvc;
-using testtest.Models;
+﻿using System.Web.Mvc;
+using DomainModel;
+using Services;
 
-namespace testtest.Controllers
+namespace Web.Controllers
 {
-       public class AutorizationController : Controller
+    public class AutorizationController : Controller
     {
         
         // GET: Autorization
         public ActionResult Login(User model)
         {
-            UserService userService = new UserService();
-            var chekedDirection =userService.CheckData(model);
-                return RedirectToAction(chekedDirection, "Autorization");
-            }
+        UserService userService = new UserService();
+        var chekedDirection =userService.CheckData(model);
+            return RedirectToAction(chekedDirection, "Autorization");
+        }
 
-            public ActionResult LoginPage()
+        public ActionResult LoginPage()
         {
             return View();
         }
 
-            public ActionResult Football()
+        public ActionResult Football()
         {
        
             return View();

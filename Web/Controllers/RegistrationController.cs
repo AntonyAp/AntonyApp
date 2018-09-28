@@ -1,17 +1,17 @@
 ﻿using System.Web.Mvc;
-using testtest.Models;
-using Service;
+using DomainModel;
+using Services;
 
-namespace testtest.Controllers
+namespace Web.Controllers
 {
     public class RegistrationController : Controller
     {
-        
         // GET: Registration
         public ActionResult RegistrationPage()
         {
             return View();
         }
+
         public ActionResult Registration( User user)
         {
             var userService = new UserService();
