@@ -8,7 +8,7 @@ namespace testtest.Controllers
 {
        public class AutorizationController : Controller
     {
-        UserContext db = new UserContext();
+        
         // GET: Autorization
         public ActionResult Login(User model)
         {

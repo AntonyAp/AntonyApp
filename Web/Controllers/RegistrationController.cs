@@ -12,7 +12,7 @@ namespace testtest.Controllers
 {
     public class RegistrationController : Controller
     {
-        private UserContext db = new UserContext();
+        
         // GET: Registration
         public ActionResult RegistrationPage()
         {

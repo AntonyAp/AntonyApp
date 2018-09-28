@@ -222,13 +222,13 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Service\Service.csproj">
-      <Project>{ae938df7-e2cc-4b4b-bf68-7ff904f4959c}</Project>
-      <Name>Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\testtest\Domain.csproj">
-      <Project>{2a0e6f32-b032-40e1-bd3c-2f98e3c358b0}</Project>
+    <ProjectReference Include="..\ClassLibrary1\Domain.csproj">
+      <Project>{0c71acc9-08ae-47f2-ac4e-c0119657e40b}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Servic\Service.csproj">
+      <Project>{48e40bc1-1436-471d-a28b-29f4312a0845}</Project>
+      <Name>Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -213,9 +213,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\testtest\Domain.csproj">
-      <Project>{2a0e6f32-b032-40e1-bd3c-2f98e3c358b0}</Project>
-      <Name>Domain</Name>
+    <ProjectReference Include="..\ClassLibrary1\Domai.csproj">
+      <Project>{0c71acc9-08ae-47f2-ac4e-c0119657e40b}</Project>
+      <Name>Domai</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
