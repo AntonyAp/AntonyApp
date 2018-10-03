@@ -6,8 +6,6 @@ namespace Services.Services.Contracts
     {
         void Add(User user);
 
-        void Save(User user);
-
-        string CheckData(User user);
+       string CheckData(User user);
     }
 }

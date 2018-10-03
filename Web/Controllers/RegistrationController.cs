@@ -23,7 +23,6 @@ namespace Web.Controllers
         public ActionResult Registration( User user)
         {
             userService.Add(user);
-            userService.Save(user);
             return RedirectToAction("LoginPage", "Autorization");
         }
     }

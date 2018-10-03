@@ -12,12 +12,7 @@ namespace Services.DataAccessProviders
             throw new NotImplementedException();
         }
 
-        public void Save(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string CheckData(User user)
+       public string CheckData(User user)
         {
             throw new NotImplementedException();
         }

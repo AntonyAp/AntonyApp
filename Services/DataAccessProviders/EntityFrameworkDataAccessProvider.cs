@@ -11,13 +11,8 @@ namespace Services.DataAccessProviders
         public void Add(User user)
         {
             db.Users.Add(user);
-        }
-
-        public void Save(User user)
-        {
             db.SaveChanges();
         }
-
         public string CheckData(User user)
         {
             var users = db.Users;

@@ -18,12 +18,7 @@ namespace Services
         {
             dataAccessProvider.Add(user);
         }
-
-        public void Save(User user)
-        {
-            dataAccessProvider.Save(user);
-        }
-
+        
         public string CheckData(User user)
         {
             return dataAccessProvider.CheckData(user);
