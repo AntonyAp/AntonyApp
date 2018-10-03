@@ -1,4 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <users>
- 
+  <user name="Anton">
+    <login>Antony</login>
+    <password>123456</password>
+  </user>
 </users>

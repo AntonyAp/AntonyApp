@@ -2,7 +2,6 @@
 using System.Data.SqlClient;
 using DomainModel;
 using Services.Services.Contracts;
-using System.Configuration;
 namespace Services.DataAccessProviders
 {
     // TODO: Store users in the database. Connect the database using ADO.NET
@@ -29,11 +28,6 @@ namespace Services.DataAccessProviders
                 int number = command.ExecuteNonQuery();
             }
          }
-
-        public void Save(User user)
-        {
-            
-        }
 
         public string CheckData(User user)
         {

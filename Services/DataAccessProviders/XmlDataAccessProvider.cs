@@ -1,10 +1,11 @@
 ﻿using System.Web;
-using System.IO;
-using System.Net;
 using System.Xml;
 using System.Xml.Linq;
 using DomainModel;
 using Services.Services.Contracts;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Services.DataAccessProviders
 {
     // TODO: Store users in the xml file
@@ -35,28 +36,13 @@ namespace Services.DataAccessProviders
 
         public string CheckData(User user)
         {
-            var direction = "LoginPage";
-            XmlDocument xDoc = new XmlDocument();
-            xDoc.Load(HttpContext.Current.Server.MapPath("~/App_Data/XMLStorage.xml"));
-            XmlElement xRoot = xDoc.DocumentElement;
-            foreach (XmlNode xnode in xRoot)
-            {
-                foreach (XmlNode childnode in xnode.ChildNodes)
-                {
-                    if (childnode.Name == "login")
-                    {
-                        if (childnode.InnerText != user.Login) break;
-                    }
-
-                    if (childnode.Name == "password")
-                    {
-                        if (childnode.InnerText != user.Password) break;
-                        direction = "Football";
-                        return direction;
-                    }
-                }
-            }
-            return direction;
+            XElement root = XElement.Load(HttpContext.Current.Server.MapPath("~/App_Data/XMLStorage.xml"));
+            IEnumerable<XElement> users =
+                from el in root.Elements("user")
+                where (string) el.Element("login") == user.Login && (string) el.Element("password") == user.Password
+                select el;
+            var redirectViewName = users.Any()? "Football" : "LoginPage";
+            return redirectViewName;
         }
     }
 }
