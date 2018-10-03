@@ -13,30 +13,18 @@ namespace Services.DataAccessProviders
     {
         public void Add(User user)
         {
-            XmlDocument xDoc = new  XmlDocument();
-            xDoc.Load(HttpContext.Current.Server.MapPath("~/App_Data/XMLStorage.xml"));
-             XmlElement xRoot = xDoc.DocumentElement;
-                   XmlElement userElem = xDoc.CreateElement("user");
-                        XmlAttribute nameAttr = xDoc.CreateAttribute("name");
-                        XmlElement loginElem = xDoc.CreateElement("login");
-                        XmlElement passwordElem = xDoc.CreateElement("password");
-                            XmlText nameText = xDoc.CreateTextNode(user.Name);
-                            XmlText loginText = xDoc.CreateTextNode(user.Login);
-                            XmlText passwordText = xDoc.CreateTextNode(user.Password);
-
-            nameAttr.AppendChild(nameText);
-            loginElem.AppendChild(loginText);
-            passwordElem.AppendChild(passwordText);
-                userElem.Attributes.Append(nameAttr);
-                userElem.AppendChild(loginElem);
-                userElem.AppendChild(passwordElem);
-             xRoot.AppendChild(userElem);
+            XDocument xDoc = XDocument.Load(HttpContext.Current.Server.MapPath("~/App_Data/XMLStorage.xml"));
+            XElement root = xDoc.Element("users");
+            root.Add(new XElement("user",
+                new XAttribute("name", user.Name),
+                new XElement("login", user.Login),
+                new XElement("password", user.Password)));
             xDoc.Save(HttpContext.Current.Server.MapPath("~/App_Data/XMLStorage.xml"));
         }
-
         public string CheckData(User user)
         {
-            XElement root = XElement.Load(HttpContext.Current.Server.MapPath("~/App_Data/XMLStorage.xml"));
+        XDocument xDoc = XDocument.Load(HttpContext.Current.Server.MapPath("~/App_Data/XMLStorage.xml"));
+            XElement root = xDoc.Element("users");
             IEnumerable<XElement> users =
                 from el in root.Elements("user")
                 where (string) el.Element("login") == user.Login && (string) el.Element("password") == user.Password
