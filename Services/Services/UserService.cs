@@ -11,7 +11,8 @@ namespace Services
         public UserService()
         {
              //dataAccessProvider = new EntityFrameworkDataAccessProvider();
-            dataAccessProvider = new AdoNetDataAccessProvider();
+           // dataAccessProvider = new AdoNetDataAccessProvider();
+            dataAccessProvider = new XmlDataAccessProvider();
         }
 
         public void Add(User user)
