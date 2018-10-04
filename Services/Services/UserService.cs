@@ -20,9 +20,9 @@ namespace Services
             dataAccessProvider.Add(user);
         }
         
-        public string CheckData(User user)
+        public bool ValidateCredentials(User user)
         {
-            return dataAccessProvider.CheckData(user);
+            return dataAccessProvider.ValidateCredentials(user);
         }
     }
 }

@@ -8,5 +8,8 @@
     <login>vApanovich</login>
     <password>123</password>
   </user>
-  
+  <user name="joe">
+    <login>jonjo</login>
+    <password>12</password>
+  </user>
 </users>

@@ -13,24 +13,25 @@ namespace Services.DataAccessProviders
     {
         public void Add(User user)
         {
-            XDocument xDoc = XDocument.Load(HttpContext.Current.Server.MapPath("~/App_Data/XMLStorage.xml"));
-            XElement root = xDoc.Element("users");
+            var xDoc = XDocument.Load(HttpContext.Current.Server.MapPath("~/App_Data/XMLStorage.xml"));
+            var root = xDoc.Element("users");
             root.Add(new XElement("user",
                 new XAttribute("name", user.Name),
                 new XElement("login", user.Login),
                 new XElement("password", user.Password)));
             xDoc.Save(HttpContext.Current.Server.MapPath("~/App_Data/XMLStorage.xml"));
         }
-        public string CheckData(User user)
+        public bool ValidateCredentials(User user)
         {
-        XDocument xDoc = XDocument.Load(HttpContext.Current.Server.MapPath("~/App_Data/XMLStorage.xml"));
-            XElement root = xDoc.Element("users");
+            var correctData = false;
+            var xDoc = XDocument.Load(HttpContext.Current.Server.MapPath("~/App_Data/XMLStorage.xml"));
+            var root = xDoc.Element("users");
             IEnumerable<XElement> users =
                 from el in root.Elements("user")
                 where (string) el.Element("login") == user.Login && (string) el.Element("password") == user.Password
                 select el;
-            var redirectViewName = users.Any()? "Football" : "LoginPage";
-            return redirectViewName;
+            if (users.Any()) correctData = true;
+            return correctData;
         }
     }
 }

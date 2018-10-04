@@ -13,12 +13,13 @@ namespace Services.DataAccessProviders
             db.Users.Add(user);
             db.SaveChanges();
         }
-        public string CheckData(User user)
+        public bool ValidateCredentials(User user)
         {
+            var correctData = false;
             var users = db.Users;
             var userExists = users.Any(x => x.Login == user.Login && x.Password == user.Password);
-            var redirectViewName = userExists ? "Football" : "LoginPage";
-            return redirectViewName;
+            if(userExists) correctData=true;
+            return correctData;
         }
     }
 }

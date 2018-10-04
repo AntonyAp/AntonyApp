@@ -11,40 +11,41 @@ namespace Services.DataAccessProviders
         //string connectionString = ConfigurationManager.ConnectionStrings["UserStore"].ConnectionString;
         public void Add(User user)
         {
-            string name = user.Name;
-            string password = user.Password;
-            string login = user.Login;
-            string sqlExpression = "INSERT INTO Users (password,login,name) VALUES (@password, @login,@name)";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            var name = user.Name;
+            var password = user.Password;
+            var login = user.Login;
+            var sqlExpression = "INSERT INTO Users (password,login,name) VALUES (@password, @login,@name)";
+            using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection);
-                SqlParameter passwordParam = new SqlParameter("@password", password);
+                var command = new SqlCommand(sqlExpression, connection);
+                var passwordParam = new SqlParameter("@password", password);
                 command.Parameters.Add(passwordParam);
-                SqlParameter loginParam = new SqlParameter("@login", login);
+                var loginParam = new SqlParameter("@login", login);
                 command.Parameters.Add(loginParam);
-                SqlParameter nameParam = new SqlParameter("@name", name);
+                var nameParam = new SqlParameter("@name", name);
                 command.Parameters.Add(nameParam);
                 int number = command.ExecuteNonQuery();
             }
          }
 
-        public string CheckData(User user)
+        public bool ValidateCredentials(User user)
         {
-            string log = user.Login;
-            string pas = user.Password;
-            string sqlExpression = "select * from users where login=@login AND password=@password";
+            var correctData = false;
+            var log = user.Login;
+            var pas = user.Password;
+            var sqlExpression = "select * from users where login=@login AND password=@password";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection);
-                SqlParameter loginParam = new SqlParameter("@login", log);
+                var command = new SqlCommand(sqlExpression, connection);
+                var loginParam = new SqlParameter("@login", log);
                 command.Parameters.Add(loginParam);
-                SqlParameter passwordParam = new SqlParameter("@password", pas);
+                var passwordParam = new SqlParameter("@password", pas);
                 command.Parameters.Add(passwordParam);
-                SqlDataReader reader = command.ExecuteReader();
-                var redirectViewName = reader.HasRows ? "Football" : "LoginPage";
-                return redirectViewName;
+                var reader = command.ExecuteReader();
+                if (reader.HasRows) correctData = true;
+                return correctData;
             }
         }
     }

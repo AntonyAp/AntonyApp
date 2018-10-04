@@ -12,7 +12,7 @@ namespace Services.DataAccessProviders
             throw new NotImplementedException();
         }
 
-       public string CheckData(User user)
+       public bool ValidateCredentials(User user)
         {
             throw new NotImplementedException();
         }

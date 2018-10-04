@@ -17,8 +17,9 @@ namespace Web.Controllers
         // GET: Autorization
         public ActionResult Login(User model)
         {
-            var chekedDirection = userService.CheckData(model);
-            return RedirectToAction(chekedDirection, "Autorization");
+           if (userService.ValidateCredentials(model))
+            return RedirectToAction("Football", "Autorization");
+            else return RedirectToAction("LoginPage", "Autorization");
         }
 
         public ActionResult LoginPage()
