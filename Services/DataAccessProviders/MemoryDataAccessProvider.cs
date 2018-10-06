@@ -25,16 +25,16 @@ namespace Services.DataAccessProviders
 
             }
             userList.Add(user);
-            HttpContext.Current.Application["UserList"] = new List<User>(userList);
+            HttpContext.Current.Application["UserList"] = userList;
             
         }
 
        public bool ValidateCredentials(User user)
         {
-            bool correctData = false;
+            var correctData = false;
             if (HttpContext.Current.Application["UserList"] != null)
             {
-                List<User> userList = ((List<User>)HttpContext.Current.Application["UserList"]);
+                var userList = ((List<User>)HttpContext.Current.Application["UserList"]);
                 if (userList.Any(x => x.Login == user.Login && x.Password == user.Password))
                 {
                     correctData = true;
