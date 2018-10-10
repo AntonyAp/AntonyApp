@@ -29,6 +29,11 @@ namespace Services.DataAccessProviders
             }
          }
 
+        public User FindUser(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool ValidateCredentials(User user)
         {
             var correctData = false;

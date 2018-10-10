@@ -13,6 +13,13 @@ namespace Services.DataAccessProviders
             db.Users.Add(user);
             db.SaveChanges();
         }
+
+        public User FindUser(int id)
+        {
+            User user = db.Users.Find(id);
+            return user;
+        }
+
         public bool ValidateCredentials(User user)
         {
             var correctData = false;

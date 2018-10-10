@@ -10,17 +10,22 @@ namespace Services
 
         public UserService()
         {
-            //dataAccessProvider = new EntityFrameworkDataAccessProvider();
+            dataAccessProvider = new EntityFrameworkDataAccessProvider();
             // dataAccessProvider = new AdoNetDataAccessProvider();
             //dataAccessProvider = new XmlDataAccessProvider();
-            dataAccessProvider = new MemoryDataAccessProvider();
+          //  dataAccessProvider = new MemoryDataAccessProvider();
         }
 
         public void Add(User user)
         {
             dataAccessProvider.Add(user);
         }
-        
+
+        public User FindUser(int id)
+        {
+           return dataAccessProvider.FindUser(id);
+        }
+
         public bool ValidateCredentials(User user)
         {
             return dataAccessProvider.ValidateCredentials(user);

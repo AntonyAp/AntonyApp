@@ -7,5 +7,6 @@ namespace Services.Services.Contracts
         void Add(User user);
 
        bool ValidateCredentials(User user);
+        User FindUser(int id);
     }
 }

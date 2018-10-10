@@ -156,6 +156,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AutorizationController.cs" />
+    <Compile Include="Controllers\CRUDController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Global.asax.cs">
@@ -204,6 +205,11 @@
     <Content Include="Views\Registration\RegistrationPage.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\CRUD\Index.cshtml" />
+    <Content Include="Views\CRUD\Create.cshtml" />
+    <Content Include="Views\CRUD\Edit.cshtml" />
+    <Content Include="Views\CRUD\Delete.cshtml" />
+    <Content Include="Views\CRUD\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

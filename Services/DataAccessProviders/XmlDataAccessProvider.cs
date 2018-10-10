@@ -21,6 +21,12 @@ namespace Services.DataAccessProviders
                 new XElement("password", user.Password)));
             xDoc.Save(HttpContext.Current.Server.MapPath("~/App_Data/XMLStorage.xml"));
         }
+
+        public User FindUser(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public bool ValidateCredentials(User user)
         {
             var correctData = false;
