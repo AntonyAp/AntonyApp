@@ -1,4 +1,5 @@
-﻿using DomainModel;
+﻿using System.Collections.Generic;
+using DomainModel;
 
 namespace Services.Services.Contracts
 {
@@ -8,5 +9,8 @@ namespace Services.Services.Contracts
 
        bool ValidateCredentials(User user);
         User FindUser(int id);
+        List<User> ListOfUsers();
+        void Delete(int id);
+        void Edit(User user);
     }
 }

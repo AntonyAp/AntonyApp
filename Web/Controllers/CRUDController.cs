@@ -23,13 +23,7 @@ namespace Web.Controllers
 
         public ActionResult Index()
         {
-            using (UserContext db = new UserContext())
-
-            {
-                return View(db.Users.ToList());
-            }
-
-            
+                return View(userService.ListOfUsers());
         }
 
         public ActionResult Create()
@@ -40,21 +34,15 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult Create(User user)
         {
-            using (UserContext db = new UserContext())
-
-            {
-                db.Users.Add(user);
-                db.SaveChanges();
+                userService.Add(user);
                 return RedirectToAction("Index");
-            }
+            
         }
         public ActionResult Details(int id)
         {
-            using (UserContext db = new UserContext())
-
-            {
-                return View(db.Users.Where(x => x.Id == id).FirstOrDefault());
-            }
+           
+                return View(userService.FindUser(id));
+            
         }
         public ActionResult Edit(int id)
         {
@@ -63,35 +51,21 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult Edit(User user)
         {
-            using (UserContext db = new UserContext())
+            userService.Edit(user);
+            return RedirectToAction("Index");
 
-            {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            
-        }
+         }
         public ActionResult Delete(int id)
         {
-            using (UserContext db = new UserContext())
-
-            {
-                return View(db.Users.Where(x => x.Id == id).FirstOrDefault());
-            }
+            return View();
         }
     
     [HttpPost]
         public ActionResult Delete(int id,User user)
         {
-            using (UserContext db = new UserContext())
-
-            {
-                User removedUser = db.Users.Where(x => x.Id == id).FirstOrDefault();
-                db.Users.Remove(removedUser);
-                db.SaveChanges();
+                userService.Delete(id);
                 return RedirectToAction("Index");
-            }
+            
         }
     }
 }

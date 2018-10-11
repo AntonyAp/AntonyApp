@@ -22,7 +22,22 @@ namespace Services.DataAccessProviders
             xDoc.Save(HttpContext.Current.Server.MapPath("~/App_Data/XMLStorage.xml"));
         }
 
+        public void Delete(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Edit(User user)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public User FindUser(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public List<User> ListOfUsers()
         {
             throw new System.NotImplementedException();
         }

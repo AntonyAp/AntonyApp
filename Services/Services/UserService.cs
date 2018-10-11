@@ -1,4 +1,5 @@
-﻿using DomainModel;
+﻿using System.Collections.Generic;
+using DomainModel;
 using Services.DataAccessProviders;
 using Services.Services.Contracts;
 
@@ -21,9 +22,24 @@ namespace Services
             dataAccessProvider.Add(user);
         }
 
+        public void Delete(int id)
+        {
+             dataAccessProvider.Delete(id);
+        }
+
+        public void Edit(User user)
+        {
+            dataAccessProvider.Edit(user);
+        }
+
         public User FindUser(int id)
         {
            return dataAccessProvider.FindUser(id);
+        }
+        public List<User> ListOfUsers()
+        {
+
+            return dataAccessProvider.ListOfUsers();
         }
 
         public bool ValidateCredentials(User user)

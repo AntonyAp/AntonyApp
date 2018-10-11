@@ -30,8 +30,21 @@ namespace Services.DataAccessProviders
             
 
         }
+        public void Edit(User user)
+        {
+            throw new NotImplementedException();
+        }
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
 
         public User FindUser(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<User> ListOfUsers()
         {
             throw new NotImplementedException();
         }
