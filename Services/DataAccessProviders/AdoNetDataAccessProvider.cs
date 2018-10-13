@@ -32,21 +32,86 @@ namespace Services.DataAccessProviders
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var sqlExpression = "DELETE  FROM users where Id=@id ";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand(sqlExpression, connection);
+                var IDparam = new SqlParameter("@id", id);
+                command.Parameters.Add(IDparam);
+                var number = command.ExecuteNonQuery();
+             }
         }
 
         public void Edit(User user)
         {
-            throw new NotImplementedException();
+            var id = user.Id;
+            var log = user.Login;
+            var pas = user.Password;
+            var name = user.Name;
+            var sqlExpression = "update users set  login=@login, password=@password,name=@name where id=@id";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand(sqlExpression, connection);
+                var loginParam = new SqlParameter("@login", log);
+                command.Parameters.Add(loginParam);
+                var passwordParam = new SqlParameter("@password", pas);
+                command.Parameters.Add(passwordParam);
+                var nameParam = new SqlParameter("@name", name);
+                command.Parameters.Add(nameParam);
+                var IDparam = new SqlParameter("@id", id);
+                command.Parameters.Add(IDparam);
+                var reader = command.ExecuteReader();
+
+            }
         }
 
         public User FindUser(int id)
         {
+            string sqlExpression = "SELECT * FROM Users where id=@id";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                var IDparam = new SqlParameter("@id", id);
+                command.Parameters.Add(IDparam);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var user = new User();
+                    user.Id = reader.GetInt32(0);
+                    user.Password = reader.GetString(1);
+                    user.Login = reader.GetString(2);
+                    user.Name = reader.GetString(3);
+                    return user;
+                }
+            }
+
             throw new NotImplementedException();
         }
 
         public List<User> ListOfUsers()
         {
+            var users = new List<User>();
+            string sqlExpression = "SELECT * FROM Users";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                { var user=new User();
+                    user.Id = reader.GetInt32(0);
+                    user.Password = reader.GetString(1);
+                    user.Login = reader.GetString(2);
+                    user.Name = reader.GetString(3);
+                    users.Add(user);
+                }
+
+                return users;
+            }
+
             throw new NotImplementedException();
         }
 
